@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>The Ogopogo</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/registerForm.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="js/jquery-3.7.0.js"></script>
+  <script src="js/provinceCity.js"></script>
+</head>
+<body>
+    
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
+        </button>
+        <a class="navbar-brand">Ogopogo</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="main.html">Home</a></li>
+            <li><a href="#">hot posts</a></li>
+            <li><a href="createPost.html">submit new post</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+        </div>
+    </div>
+    </nav>
+
+    <section class="h-100 bg-dark">
+        <div class="container py-5 h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col">
+              <div class="card card-registration my-4">
+                <div class="row g-0">
+                  <div class="col-xl-6 d-none d-xl-block col-sm-offset-4">
+                    <a href="main.html">
+                      <img src="img/ogopogo_mini.JPG" alt="Sample photo" class="img-fluid"/>
+                    </a>
+                  </div>
+                  <div class="col-xl-6 col-sm-offset-4" style="width:400px">
+                    <div class="card-body p-md-5 text-black">
+                      <h3 class="mb-5 text-uppercase">Member Registration Form</h3>
+
+                      <form action="/action_page.php"  method="get" autocomplete="off">
+                        
+                        <div class="row">
+                          <div class="col-md-6 mb-4">
+                            <div class="form-outline">
+                              <label class="form-label" for="form3Example1m">First name</label>
+                              <input name="firstName" type="text" id="form3Example1m" class="form-control form-control-lg" placeholder="enter first name"  />
+                            </div>
+                          </div>
+                          <div class="col-md-6 mb-4">
+                            <div class="form-outline">
+                              <label class="form-label" for="form3Example1n">Last name</label>
+                              <input name="lastName" type="text" id="form3Example1n" class="form-control form-control-lg" placeholder="enter last name"/>
+                            </div>
+                          </div>
+                        </div>
+        
+                        <div class="form-outline mb-4">
+                          <label class="form-label" for="form3Example8">Address</label>
+                          <input name="address" type="text" id="form3Example8" class="form-control form-control-lg" placeholder="enter address"/>
+                        </div>
+        
+                        <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+        
+                          <h6 class="form-outline mb-4"><strong>Gender:</strong></h6>
+        
+                            <input class="form-check-input" type="radio" name="gender" id="inlineCheckbox1"
+                              value="female" />
+                            <label class="form-check-label" for="inlineCheckbox1">Female</label>
+                            <input class="form-check-input" type="radio" name="gender" id="inlineCheckbox2"
+                              value="male" />
+                            <label class="form-check-label" for="inlineCheckbox2">Male</label>
+                            <input class="form-check-input" type="radio" name="gender" id="inlineCheckbox3"
+                              value="other" />
+                            <label class="form-check-label" for="inlineCheckbox3">Other</label>
+                          
+        
+                        </div>
+        
+                        <div class="row">
+                          <div class="col-md-6 mb-4">
+                            <select class = "provinceSelector" name="province" id="province">
+                              <option value="void"> -- Please Select Province --</option>
+                              <option value="AB">Alberta</option>
+                              <option value="BC">BritishColumbia</option>
+                              <option value="MB">Manitoba</option>
+                              <option value="NB">New Brunswick</option>
+                              <option value="NL">Newfoundland and Labrador</option>
+                              <option value="NS">Nova Scotia</option>
+                              <option value="NT">Northwest Territories</option>
+                              <option value="NU">Nunavut</option>
+                              <option value="ON">Ontario</option>
+                              <option value="PE">Prince Edward Island</option>
+                              <option value="QC">Quebec</option>
+                              <option value="SK">Saskatchewan</option>
+                              <option value="YT">Yukon</option>
+                            </select> 
+                          </div>
+                          <div class="col-md-6 mb-4">
+                            <input name="city" type="text" class = "form-control form-control-lg" id="city" placeholder="enter city name">
+                          </div>
+                        </div>
+                        
+                        
+                        <div class="form-outline mb-4">
+                          <label class="form-check-label">User Name</label>
+                          <input name="userName" type="text" id="form3Example90" class="form-control form-control-lg" placeholder="create a user name"/>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                          <label class="form-check-label">Password</label>
+                          <input name="password" type="text" id="form3Example90" class="form-control form-control-lg" placeholder="please set your password"/>
+                        </div>
+                        
+                        <div class="form-outline mb-4">
+                          <label class="form-check-label">re-enter password</label>
+                          <input type="text" id="form3Example90" class="form-control form-control-lg" placeholder="re-enter password"/>
+                        </div>
+        
+                        <div class="form-outline mb-4">
+                          <label class="form-label" >Email</label>
+                          <input name="email" type="text" id="form3Example97" class="form-control form-control-lg" placeholder="enter email address" />
+                        </div>
+                        <div class="d-flex justify-content-end pt-3">
+                          <button type="submit" class="btn btn-warning btn-lg ms-2 text-right">Submit form</button>
+                          <button type="reset" class="btn btn-light btn-lg text-left">Reset all</button>
+                        </div>
+                        <div class = "text-right">                
+                          <a href="#!" class="small text-muted">Terms of use.</a>
+                          <a href="#!" class="small text-muted">Privacy policy</a>
+                          <a href="#!" class="small text-muted">© 2023 COSC360 The Ogopogo Project</a>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+</body>
+</html>
+
