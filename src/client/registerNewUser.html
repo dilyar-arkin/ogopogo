@@ -25,12 +25,11 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-            <li class="active"><a href="main.html">Home</a></li>
-            <li><a href="#">hot posts</a></li>
-            <li><a href="createPost.html">submit new post</a></li>
+            <li class="active"><a href="index.html">Home</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li><a href="index.html"><span class="glyphicon glyphicon-arrow-left"></span> Return</a></li>
         </ul>
         </div>
     </div>
@@ -43,7 +42,7 @@
               <div class="card card-registration my-4">
                 <div class="row g-0">
                   <div class="col-xl-6 d-none d-xl-block col-sm-offset-4">
-                    <a href="main.html">
+                    <a href="index.html">
                       <img src="img/ogopogo_mini.JPG" alt="Sample photo" class="img-fluid"/>
                     </a>
                   </div>
@@ -51,7 +50,7 @@
                     <div class="card-body p-md-5 text-black">
                       <h3 class="mb-5 text-uppercase">Member Registration Form</h3>
 
-                      <form action="/action_page.php"  method="get" autocomplete="off">
+                      <form action="../server/register.php"  method="POST" autocomplete="off">
                         
                         <div class="row">
                           <div class="col-md-6 mb-4">
@@ -68,30 +67,9 @@
                           </div>
                         </div>
         
-                        <div class="form-outline mb-4">
-                          <label class="form-label" for="form3Example8">Address</label>
-                          <input name="address" type="text" id="form3Example8" class="form-control form-control-lg" placeholder="enter address"/>
-                        </div>
-        
-                        <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
-        
-                          <h6 class="form-outline mb-4"><strong>Gender:</strong></h6>
-        
-                            <input class="form-check-input" type="radio" name="gender" id="inlineCheckbox1"
-                              value="female" />
-                            <label class="form-check-label" for="inlineCheckbox1">Female</label>
-                            <input class="form-check-input" type="radio" name="gender" id="inlineCheckbox2"
-                              value="male" />
-                            <label class="form-check-label" for="inlineCheckbox2">Male</label>
-                            <input class="form-check-input" type="radio" name="gender" id="inlineCheckbox3"
-                              value="other" />
-                            <label class="form-check-label" for="inlineCheckbox3">Other</label>
-                          
-        
-                        </div>
-        
                         <div class="row">
                           <div class="col-md-6 mb-4">
+                            <label class="form-label">Province</label>
                             <select class = "provinceSelector" name="province" id="province">
                               <option value="void"> -- Please Select Province --</option>
                               <option value="AB">Alberta</option>
@@ -110,11 +88,11 @@
                             </select> 
                           </div>
                           <div class="col-md-6 mb-4">
+                            <label class="form-label">City</label>
                             <input name="city" type="text" class = "form-control form-control-lg" id="city" placeholder="enter city name">
                           </div>
                         </div>
-                        
-                        
+                          
                         <div class="form-outline mb-4">
                           <label class="form-check-label">User Name</label>
                           <input name="userName" type="text" id="form3Example90" class="form-control form-control-lg" placeholder="create a user name"/>
@@ -122,12 +100,12 @@
 
                         <div class="form-outline mb-4">
                           <label class="form-check-label">Password</label>
-                          <input name="password" type="text" id="form3Example90" class="form-control form-control-lg" placeholder="please set your password"/>
+                          <input name="password" type="password" id="form3Example90" class="form-control form-control-lg" placeholder="please set your password"/>
                         </div>
                         
                         <div class="form-outline mb-4">
                           <label class="form-check-label">re-enter password</label>
-                          <input type="text" id="form3Example90" class="form-control form-control-lg" placeholder="re-enter password"/>
+                          <input type="password" id="form3Example90" class="form-control form-control-lg" placeholder="re-enter password"/>
                         </div>
         
                         <div class="form-outline mb-4">

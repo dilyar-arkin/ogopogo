@@ -40,7 +40,7 @@
       background: ivory;
     }
     td{
-      background-color: lightgray;
+      background-color: ivory;
     }
     td:hover{
       font-weight: bold;
@@ -63,5 +63,7 @@
     #lowerContent{
       padding-top: 20px;
     }
-  
+    tr{
+      background: black;
+    }
   

@@ -11,25 +11,32 @@
   <body>
 
     <div class="card">
-        <div class="card-header" style="background: black; color: aliceblue; font-weight: bold;">Create New Poll</div>
+        <div class="card-header text-center" style="background: black; color: aliceblue; font-weight: bold;">
+          Create New Poll
+          <p class="text-right">
+          <span class="text-right"><a href="../server/main.php">Return</a></span><br>
+          <span class="text-right"></span><a href="../server/logout.php">Logout</a></span>
+          </p>
+        </div>
+        
         <div class="card-body">
-    <form>
-    <!-- Input type text -->
-    <div class="form-group row align-items-center">
-        <label for="email" class="col-sm-2 col-form-label">Title</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" name="title" id="title" placeholder="title of your poll" required>
+        <form method="POST" action="../server/postTodb.php">
+        <!-- Input type text -->
+        <div class="form-group row align-items-center">
+            <label for="email" class="col-sm-2 col-form-label">Title</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="title" id="title" placeholder="what is the topic your poll (limit to 300 words)" required>
+            </div>
         </div>
-    </div>
-    
-    <!-- Input type text -->
-    <div class="form-group row align-items-center">
-        <label for="input_id_0" class="col-sm-2 col-form-label">Question</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" name="question" id="input_id_0" placeholder="what should we vote about in the Okanagan Valley today?">
+        
+        <!-- Input type text -->
+        <div class="form-group row align-items-center">
+            <label for="input_id_0" class="col-sm-2 col-form-label">Set Poll Closing Date/Time</label>
+            <div class="col-sm-10">
+                <input type="datetime" class="form-control" name="closedate" id="input_id_0" placeholder="yyyy-mm-dd hh-mm-ss">
+            </div>
         </div>
-    </div>
-    
+        
 
     <!-- Input type text -->
     <div class="form-group row align-items-center">
@@ -97,7 +104,7 @@
   
           <!--Image-->
           <div class="view overlay z-depth-1-half">
-            <a href="main.html">
+            <a href="../server/routing.php">
               <img src="img/ogopogo_mini.JPG" class="img-fluid" alt="">
               <div class="mask rgba-white-light"></div>
             </a>

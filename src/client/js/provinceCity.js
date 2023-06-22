@@ -362,8 +362,14 @@ $(window).on('load',function(){
 
         var province = event.target.value;
         console.log(province)
+        if(province == "BC"){
+          autocomplete(document.getElementById("city"),BC);  
+        }
+        else if (province == "AB"){
+          autocomplete(document.getElementById("city"),AB);
+        }
     })
 
-    autocomplete(document.getElementById("city"),BC);
-    // only BC array is sent for autocomplete, to fix this, province must be verified with other arrays in if statement;
+    
+    // only BC and AB arrays are sent for autocomplete, this is a hard coding, ideally we want to grab values from the server using sql;
 })
