@@ -40,13 +40,14 @@ if (!isset($_SESSION['loggedin']) || strcmp($_SESSION['uname'],'admin')!=0) {
             else
             {
                 //To Do List: Verify if such poll exist before delete command
-                //$sql1="SELECT * FROM polls WHERE id=".'"'.$pollid.'"'. "AND username=".'"'.$username.'";';
-                //$results = mysqli_query($connection, $sql1);
-                //$row = mysqli_fetch_assoc($results); //expecting only 1 row since usernames are unique; 
-                // -------------------------------------------------------------------------------------
+                $sql1="SELECT * FROM polls WHERE id=".'"'.$pollid.'"'. "AND username=".'"'.$username.'";';
+                $results = mysqli_query($connection, $sql1);
+                $row = mysqli_fetch_assoc($results); //expecting only 1 row since usernames are unique; 
+                // ----------------------------------------------------------------------------------------
                 // Note: need to verify polls to be deleted exists in the database otherwise return error 
-                //--------------------------------------------------------------------------------------
-                //if($row['username'] == $username && $row['email'] == $username ){
+                //-----------------------------------------------------------------------------------------
+                echo "user name is printed:" .$row['email'];
+                if($row['username'] == $username && $row['email'] == $username ){
                     $sql = "DELETE FROM polls WHERE username=".'"'.$username.'"'. "AND id=".'"'.$pollid.'";';
                     
                     if (mysqli_query($connection, $sql)) {
@@ -55,12 +56,12 @@ if (!isset($_SESSION['loggedin']) || strcmp($_SESSION['uname'],'admin')!=0) {
                     } else {
                         echo "Error: " . $sql . "<br>" . mysqli_error($connection);
                     }
-                //}
-                /*
-                else{
-                    echo "No Such User Found in the Database, enter correct information";
                 }
-                */
+                
+                else{
+                    echo "No Such Posts Found in the Database";
+                }
+                
                 //and fetch requsults
                 //mysqli_free_result($results);
                 mysqli_close($connection);

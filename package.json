@@ -3,5 +3,20 @@
   "version": "1.0.0",
   "description": "Ogopogo Project",
   "main": "src/client/index.html",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://dilyar-arkin@github.com/dilyar-arkin/ogopogo.git"
+  },
+  "keywords": [
+    "myRepo"
+  ],
+  "author": "Dilyar",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/dilyar-arkin/ogopogo/issues"
+  },
   "homepage": "https://github.com/dilyar-arkin/ogopogo#readme"
 }
