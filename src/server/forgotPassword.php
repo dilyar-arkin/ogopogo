@@ -1,87 +1,98 @@
-<!DOCTYPE html>
-<html>
-
-<?php
-// check if method is post, else terminate
-if($_SERVER['REQUEST_METHOD'] === "POST"){
-    if ( isset($_POST["newpassword"]) && isset($_POST["oldpassword"]) && isset($_POST["username"])&&isset($_POST["email"]) ) {
-        $oldpassword =  $_POST["oldpassword"];
-        $password = $_POST["newpassword"];   
-        $username = $_POST["username"];   
-        $email = $_POST["email"];   
-        SQLconnection($username,$oldpassword,$password,$email);  // send user input values to sql processing function
-    }
-    else{
-        echo "<p class = 'warning'> fields are empty, try again </p>"; // if any of the user input values are empty, terminate
-    }
-}
-else {
-    echo "error : unacceptable server request. access denied"; //anything other than post method are considered unacceptable, including GET
-    echo "<p> BAD Connection Method! <a href='../client/registerNewUser.html'> register here</a></p>";
-    die();
-}
-
-function SQLconnection($uname, $Password,$newPassword,$email){
-    $Verified = false;
-    $host = "mysql-server";
-    $database = "ogopogo";
-    $user = "webuser";
-    $password = "P@ssw0rd";
-
-    $connection = mysqli_connect($host, $user, $password, $database);
-
-    $error = mysqli_connect_error();
-    if($error != null){
-        $output = "<p>Unable to connect to database!</p>";
-        exit($output);
-    }
-    else
-    {
-        //good connection, so do you thing
-        $sql = "SELECT * FROM users;";
-
-        $results = mysqli_query($connection, $sql);
-
-        //and fetch requsults
-        $counter = 0; 
-        while ($row = mysqli_fetch_assoc($results))
-        {
-            //echo $row['username']." ".$row['firstName']." ".$row['lastName']." ".$row['email']." ".$row['password']."<br/>";
-            $dbUsername[$counter] = $row['username'];
-            $dbpassword[$counter] = $row['password']; 
-            $dbemail[$counter] = $row['email'];
-            $counter++;
-        }
-        $encPassword = md5($Password); //encrypt password
-        for($i=0;$i<=$counter;$i++){
-            if(strcasecmp($dbUsername[$i],$uname)==0 && $dbpassword[$i] === $encPassword){
-                $success = "<p> user credentials verified</p>";
-                echo $success;
-                $Verified = true;
-            }
-        }
-        if($Verified){
-            $encNewPassword = md5($newPassword);
-            $sql = "UPDATE users SET password = '$encNewPassword' WHERE username = '$uname';";
-           // mysqli_query($connection,$newUser);
-            if (mysqli_query($connection, $sql)) {
-                echo "retset completed successfully ";
-              } else {
-                echo "Error: " . $sql . "<br>" . mysqli_error($connection);
-              }
-                
-            echo "<p> Your password has been updated. Thank you. ";
-        }
-        else{
-            echo "Username/password entered incorrect";
-            exit();
-        }
-        mysqli_free_result($results);
-        mysqli_close($connection);
-    }
-
+<?php 
+session_start();
+if(isset($_SESSION["loggedin"])){
+    session_destroy();
+    header('Location: ../client/index.html');
 }
 
 ?>
+<html>
+
+    <?php
+    // check if method is post, else terminate
+    if($_SERVER['REQUEST_METHOD'] === "POST"){
+        if ( isset($_POST["username"]) && isset($_POST["fname"]) && isset($_POST["lname"])&&isset($_POST["email"]) ) {
+            $username =  $_POST["username"];
+            $firstname = $_POST["fname"];   
+            $lastname = $_POST["lname"];   
+            $email = $_POST["email"];   
+            SQLconnection($username,$firstname,$lastname,$email);  // send user input values to sql processing function
+        }
+        else{
+            echo "<p class = 'warning'> fields are empty, try again </p>"; // if any of the user input values are empty, terminate
+        }
+    }
+    else {
+        echo "error : unacceptable server request. access denied"; //anything other than post method are considered unacceptable, including GET
+        echo "<p> BAD Connection Method! <a href='../client/registerNewUser.html'> register here</a></p>";
+        die();
+    }
+
+    function SQLconnection($uname, $fname,$lname,$email){
+        //echo $uname ." , ". $fname ." , ". $lname ." , ". $email ; 
+        $Verified = false;
+        $host = "mysql-server";
+        $database = "ogopogo";
+        $user = "webuser";
+        $password = "P@ssw0rd";
+
+        $connection = mysqli_connect($host, $user, $password, $database);
+
+        $error = mysqli_connect_error();
+        if($error != null){
+            $output = "<p>Unable to connect to database!</p>";
+            exit($output);
+        }
+        else
+        {
+            //good connection, so do you thing
+            $sql = "SELECT * FROM users;";
+
+            $results = mysqli_query($connection, $sql);
+
+            //and fetch requsults
+            $counter = 0; 
+            while ($row = mysqli_fetch_assoc($results))
+            {
+                //echo $row['username']." ".$row['firstName']." ".$row['lastName']." ".$row['email']." ".$row['password']."<br/>";
+                $dbUsername[$counter] = $row['username'];
+                $dbFname[$counter] = $row['firstName']; 
+                $dbLname[$counter] = $row['lastName'];
+                $dbEmail[$counter] = $row['email'];
+                $counter++;
+            }
+
+            for($i=0;$i<=$counter;$i++){
+                if(strcasecmp($dbUsername[$i],$uname)==0 && strcasecmp($dbFname[$i],$fname)==0 && strcasecmp($dbLname[$i],$lname)==0 && strcasecmp($dbEmail[$i],$email)==0 ){
+                    $success = "<p>user credentials successfully verified</p>";
+                    echo $success;
+                    $Verified = true;
+                }
+            }
+            if($Verified){
+            ?>
+                <form method="POST" action="resetPassword.php">
+                <label>new Password: </label>
+                <input type='password' name='newpassword' id='newpassword' class='required' required><br>
+                <label>re-enter new Password:</label>
+                <input type='password' name='newpasswordC' id='newpassword2'class='required' required><br>
+                <input type='submit' id='sendPass' value='submit'>
+                <input type='reset' id='reset' value='reset'>
+                </form>
+
+            <?php
+            }
+            else{
+                echo "Username/password entered incorrect";
+                exit();
+            }
+            
+            mysqli_free_result($results);
+            mysqli_close($connection);
+        
+
+    }
+    }
+    ?>
 
 </html>

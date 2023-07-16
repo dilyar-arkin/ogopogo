@@ -5,7 +5,7 @@
 <?php
 // check if method is post, else terminate
 if($_SERVER['REQUEST_METHOD'] === "POST"){
-    if ( isset($_POST["newpassword"]) && isset($_POST["oldpassword"])) {
+    if ( isset($_POST["newpassword"]) || isset($_POST["oldpassword"])) {
         $oldpassword =  $_POST["oldpassword"];
         $password = $_POST["newpassword"];   
         $username = $_SESSION['uname'];      
