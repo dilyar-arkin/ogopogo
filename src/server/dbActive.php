@@ -6,4 +6,5 @@
         print mysqli_connect_error();
         die('Failed to connect to MySQL: '.mysqli_connect_error());
     }
+    echo 'Successfully connected to MySQL.<br>';
 ?>
