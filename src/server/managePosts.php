@@ -107,13 +107,11 @@ if (!isset($_SESSION['loggedin']) || strcmp($_SESSION['uname'],'admin')!=0) {
         <p>Full Contents List</p>
         <?php
 
-            $conn = mysqli_init();
-            mysqli_ssl_set($conn,NULL,NULL, "{DigiCertGlobalRootCA.crt}", NULL, NULL);
-            mysqli_real_connect($conn, "dilyar-db.mysql.database.azure.com", "DilyarArkin", "{Yulghun987*}", "{ogopogo}", 3306, MYSQLI_CLIENT_SSL);
-            if (mysqli_connect_errno($conn)) {
-                die('Failed to connect to MySQL: '.mysqli_connect_error());
+            $connection = mysqli_init();
+            mysqli_real_connect($connection, "dilyar-db.mysql.database.azure.com", "DilyarArkin", "{Yulghun987*}", "{ogopogo}", 3306);
+            if (mysqli_connect_errno($connection)) {
+            die('Failed to connect to MySQL: '.mysqli_connect_error());
             }
-            $connection = $conn;
 
             $error = mysqli_connect_error();
             if($error != null){
