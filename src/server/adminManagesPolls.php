@@ -8,6 +8,8 @@ if (!isset($_SESSION['loggedin']) || strcmp($_SESSION['uname'],'admin')!=0) {
 ?>
 <?php   
     // check if method is post, else terminate
+
+    
     if($_SERVER['REQUEST_METHOD'] === "POST"){
         if (isset($_POST["username"]) && isset($_POST["id"])) {
             $pollid= $_POST["id"];   
@@ -24,13 +26,20 @@ if (!isset($_SESSION['loggedin']) || strcmp($_SESSION['uname'],'admin')!=0) {
     }
     
     function mySQLconnection($username,$pollid){
+            $conn = mysqli_init();
+             mysqli_ssl_set($conn,NULL,NULL, "{DigiCertGlobalRootCA.crt}", NULL, NULL);
+            mysqli_real_connect($conn, "dilyar-db.mysql.database.azure.com", "DilyarArkin", "{Yulghun987*}", "{ogopogo}", 3306, MYSQLI_CLIENT_SSL);
+            if (mysqli_connect_errno($conn)) {
+            die('Failed to connect to MySQL: '.mysqli_connect_error());
+            }
+            $connection = $conn;
 
-            $host = "mysql-server";
-            $database = "ogopogo";
-            $user = "webuser";
-            $password = "P@ssw0rd";
+            //$host = "dilyar-db.mysql.database.azure.com";
+            //$database = "ogopogo";
+            //$user = "DilyarArkin";
+            //$password = "P@ssw0rd";
+            //$ssl_mode= "require";
 
-            $connection = mysqli_connect($host, $user, $password, $database);
 
             $error = mysqli_connect_error();
             if($error != null){

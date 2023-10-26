@@ -5,12 +5,13 @@
 <?php
 
 
-$host = "mysql-server";
-$database = "ogopogo";
-$user = "webuser";
-$password = "P@ssw0rd";
-
-$connection = mysqli_connect($host, $user, $password, $database);
+$conn = mysqli_init();
+mysqli_ssl_set($conn,NULL,NULL, "{DigiCertGlobalRootCA.crt}", NULL, NULL);
+mysqli_real_connect($conn, "dilyar-db.mysql.database.azure.com", "DilyarArkin", "{Yulghun987*}", "{ogopogo}", 3306, MYSQLI_CLIENT_SSL);
+if (mysqli_connect_errno($conn)) {
+    die('Failed to connect to MySQL: '.mysqli_connect_error());
+}
+$connection = $conn;
 $error = mysqli_connect_error();
 
 if($error != null)
