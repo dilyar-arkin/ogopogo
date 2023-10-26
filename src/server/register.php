@@ -33,6 +33,7 @@ else {
 }
 
 function SQLconnection($username, $email,$firstname,$lastname,$Password,$city,$province){
+    $newUser = true;
     include 'dbActive.php';
 
     $error = mysqli_connect_error();
