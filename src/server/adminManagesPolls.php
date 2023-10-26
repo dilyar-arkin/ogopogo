@@ -26,19 +26,7 @@ if (!isset($_SESSION['loggedin']) || strcmp($_SESSION['uname'],'admin')!=0) {
     }
     
     function mySQLconnection($username,$pollid){
-            $connection = mysqli_init();
-            mysqli_real_connect($connection, "dilyar-db.mysql.database.azure.com", "DilyarArkin", "{Yulghun987*}", "{ogopogo}", 3306);
-            if (mysqli_connect_errno($connection)) {
-            die('Failed to connect to MySQL: '.mysqli_connect_error());
-            }
-
-            //$host = "dilyar-db.mysql.database.azure.com";
-            //$database = "ogopogo";
-            //$user = "DilyarArkin";
-            //$password = "P@ssw0rd";
-            //$ssl_mode= "require";
-
-
+             include 'dbActive.php';
             $error = mysqli_connect_error();
             if($error != null){
                 $output = "<p>Unable to connect to database!</p>";

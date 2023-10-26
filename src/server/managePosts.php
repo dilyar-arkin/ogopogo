@@ -106,12 +106,8 @@ if (!isset($_SESSION['loggedin']) || strcmp($_SESSION['uname'],'admin')!=0) {
         <div style="text-align: center;"><a id="deleteStatus"></a></div>
         <p>Full Contents List</p>
         <?php
+            include 'dbActive.php';
 
-            $connection = mysqli_init();
-            mysqli_real_connect($connection, "dilyar-db.mysql.database.azure.com", "DilyarArkin", "{Yulghun987*}", "{ogopogo}", 3306);
-            if (mysqli_connect_errno($connection)) {
-            die('Failed to connect to MySQL: '.mysqli_connect_error());
-            }
 
             $error = mysqli_connect_error();
             if($error != null){

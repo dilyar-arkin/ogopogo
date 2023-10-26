@@ -8,11 +8,7 @@ if($_SERVER['REQUEST_METHOD'] === "GET"){
     if (isset($_GET["pollId"])) {
         $pollID =  $_GET["pollId"];  
     
-        $connection = mysqli_init();
-        mysqli_real_connect($connection, "dilyar-db.mysql.database.azure.com", "DilyarArkin", "{Yulghun987*}", "{ogopogo}", 3306);
-        if (mysqli_connect_errno($connection)) {
-        die('Failed to connect to MySQL: '.mysqli_connect_error());
-        }
+        include 'dbActive.php';
 
         $error = mysqli_connect_error();
         if($error != null){
