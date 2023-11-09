@@ -136,7 +136,7 @@ else {
     </div>
     <div class="leaveComment">
         <p>
-        <span>Welcome <span id = "sessionuser"><?php echo $_SESSION['uname'];?></span>, leave a comment ...</span>
+        <span>Welcome <span id = "sessionuser"><?php if(isset($_SESSION['uname'])){echo $_SESSION['uname'];}?></span>, leave a comment ...</span>
         </p> 
         <form>
         <textarea class="comment" style="width: 950px;" placeholder="Add your comments here"></textarea>  

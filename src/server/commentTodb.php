@@ -25,7 +25,7 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
             include "randomIDgenerator.php";
             $commentid = generateRandomString();
             //good connection, so do you thing
-            $sql = "INSERT INTO comments(commentid, pollID, author, description) VALUES("."'".$commentid."'".",'".$pollID."',"."'".$sessionUser."'".",'".$comment."'".");";
+            $sql = "INSERT INTO comments(commentid, pollID, author, description,time_stamp) VALUES("."'".$commentid."'".",'".$pollID."',"."'".$sessionUser."'".",'".$comment."'".");";
             if (mysqli_query($connection, $sql)) {
                 echo 'Comment Submitted!';
              } else {

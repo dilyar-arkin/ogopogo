@@ -36,7 +36,7 @@ $(window).on("load",function(){
 // if polls are closed, show the result from databse
 var sessionUser = $('#sessionuser').text();
 if(sessionUser == ''){
-    $('.leaveComment').hide();
+    $('.leaveComment').show();
 }
 
 // POSTING A COMMENT
