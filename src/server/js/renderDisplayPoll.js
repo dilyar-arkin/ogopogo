@@ -89,6 +89,7 @@ PollCloseCal(dueDate,dueDateVal);
 function updatePollStatus(){
     $('#dueDate').text("Closed");
     $('.pollBox').hide();
+    displayPollStat();
     $('pollStat').show();
     var http = new XMLHttpRequest();
     var url = 'poll.php?pollID='+pollID;
@@ -104,6 +105,31 @@ function updatePollStatus(){
     }
     }
     http.send();
+}
+
+
+function displayPollStat(){
+    $(".pollBox").hide();
+    var castedVote = $('input[name="vote"]:checked').val();
+    //$('.pollResult').html("<p>"+pollID+"</p>")
+    //$('.pollResult').html("<p>"+username+"</p>")
+    
+    // AJAX in action
+    var http = new XMLHttpRequest();
+    var url = 'poll.php';
+    var params = 'username='+username+'&pollID='+pollID+'&castedVote='+ castedVote;
+    http.open('POST', url, true);
+    //Send the proper header information along with the request
+    http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    
+    http.onreadystatechange = function() {//Call a function when the state changes.
+        if(http.readyState == 4 && http.status == 200) {
+            //alert(http.responseText);
+            document.getElementById("pollStat").innerHTML=this.responseText;
+        }
+    }
+    http.send(params);
+    
 }
 
 //-----------------------------------------------------//
