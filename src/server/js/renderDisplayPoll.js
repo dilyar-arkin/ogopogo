@@ -89,8 +89,8 @@ PollCloseCal(dueDate,dueDateVal);
 function updatePollStatus(){
     $('#dueDate').text("Closed");
     $('.pollBox').hide();
-    displayPollStat();
-    $('pollStat').show();
+    //displayPollStat();
+    $('.pollStat').show();
     var http = new XMLHttpRequest();
     var url = 'poll.php?pollID='+pollID;
 
@@ -107,7 +107,7 @@ function updatePollStatus(){
     http.send();
 }
 
-
+/*
 function displayPollStat(){
     $(".pollBox").hide();
     var castedVote = $('input[name="vote"]:checked').val();
@@ -129,9 +129,8 @@ function displayPollStat(){
         }
     }
     http.send(params);
-    
 }
-
+*/
 //-----------------------------------------------------//
 //display comments AJAX
 
