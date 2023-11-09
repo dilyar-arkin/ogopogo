@@ -56,8 +56,10 @@ if(strcmp($_GET["option"],"open")==0){
 }
 //display popular polls
 elseif (strcmp($_GET["option"],"popular")==0){
-    $username = $_SESSION['uname'];
-    echo $username;
+    if(isset($_SESSION['uname'])){
+        $username = $_SESSION['uname'];
+        echo $username;
+    }
     $sql = "SELECT * FROM polls WHERE current_status = ". '"'.'closed'.'";';
     $results = mysqli_query($connection, $sql);
     echo "
